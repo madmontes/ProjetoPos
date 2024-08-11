@@ -1,0 +1,3 @@
+200600571;50;Bilhete estudante gratuidade;true;44;5;INFNET
+200600572;50;Bilhete estudante gratuidade;true;176;20;PUC
+200600573;50;Bilhete estudante gratuidade;true;352;40;UFRJ

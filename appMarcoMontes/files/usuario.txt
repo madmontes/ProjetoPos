@@ -1,0 +1,8 @@
+U;09888987632;marcelo@gmail.com;Marcelo Mota
+E;200600571;50;Bilhete estudante gratuidade;true;44;5;INFNET
+U;11333453287;priscila@gmail.com;Priscila Campos
+T;100600572;75;cartao fidelidade;false;50;cartao fidelidade CPTM;false
+E;200600573;50;Bilhete estudante gratuidade;true;352;40;UFRJ
+U;44333298743;eduardo@gmail.com;Eduardo Esteves
+T;100600571;100;cartao prata;false;80;cartao normal;false
+T;100600573;74;cartao professor;true;120;cartao professor;true
