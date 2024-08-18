@@ -23,5 +23,12 @@ public class BilheteUnicoTemporalService {
 	public Collection<BilheteUnicoTemporal> obterLista(){
 		return mapa.values();
 	}
-
+	
+	public BilheteUnicoTemporal obterPortId(Integer id) {
+		return mapa.get(id);
+	}
+	
+	public void excluir (Integer id) {
+		mapa.remove(id);
+	}
 }

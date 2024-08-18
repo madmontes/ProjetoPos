@@ -1,6 +1,6 @@
 package br.edu.infnet.appMarcoMontes.model.domain;
 
-public class BilheteUnico {
+public abstract class BilheteUnico {
 	
 	private Integer id;
 	private Integer numero;

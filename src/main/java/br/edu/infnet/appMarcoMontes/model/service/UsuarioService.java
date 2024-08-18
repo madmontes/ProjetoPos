@@ -1,27 +1,34 @@
 package br.edu.infnet.appMarcoMontes.model.service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appMarcoMontes.model.domain.Usuario;
+import br.edu.infnet.appMarcoMontes.model.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-	
-	private Map<Integer, Usuario> mapa = new HashMap<Integer, Usuario>();
-	private Integer id = 0;
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 	
 	public void incluir(Usuario usuario) {
-		usuario.setId(++id);
-		
-		mapa.put(usuario.getId(), usuario);
+
+		usuarioRepository.save(usuario);
 	}
 	
-	public Collection<Usuario> obterLista(){
-		return mapa.values();
+	public Iterable<Usuario> obterLista(){
+		return usuarioRepository.findAll();
 	}
-
+	
+	public Usuario obterPortId(Integer id) {
+		return usuarioRepository.findById(id).orElse(null);
+	}
+	
+	public void excluir (Integer id) {
+		usuarioRepository.deleteById(id);
+	}
+	
+	public long obterQtde() {
+		return usuarioRepository.count();
+	}
 }

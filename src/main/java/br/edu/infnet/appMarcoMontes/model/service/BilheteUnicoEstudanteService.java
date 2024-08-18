@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appMarcoMontes.model.domain.BilheteUnicoEstudante;
+import br.edu.infnet.appMarcoMontes.model.domain.BilheteUnicoTemporal;
 
 @Service
 public class BilheteUnicoEstudanteService {
@@ -22,6 +23,14 @@ public class BilheteUnicoEstudanteService {
 	
 	public Collection<BilheteUnicoEstudante> obterLista(){
 		return mapa.values();
+	}
+	
+	public BilheteUnicoEstudante obterPortId(Integer id) {
+		return mapa.get(id);
+	}
+	
+	public void excluir (Integer id) {
+		mapa.remove(id);
 	}
 
 }

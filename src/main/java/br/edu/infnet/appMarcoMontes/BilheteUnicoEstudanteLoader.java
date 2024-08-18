@@ -14,7 +14,7 @@ import br.edu.infnet.appMarcoMontes.model.service.BilheteUnicoEstudanteService;
 public class BilheteUnicoEstudanteLoader implements ApplicationRunner {
 	
 	@Autowired
-	private BilheteUnicoEstudanteService bilheteunicoestudanteservice;
+	private BilheteUnicoEstudanteService bilheteunicoestudanteService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -38,12 +38,12 @@ public class BilheteUnicoEstudanteLoader implements ApplicationRunner {
 			bilheteunicoestudante.setCota(Integer.valueOf(campos[5]));
 			bilheteunicoestudante.setInstituicao(campos[6]);
 			
-			bilheteunicoestudanteservice.incluir(bilheteunicoestudante);
+			bilheteunicoestudanteService.incluir(bilheteunicoestudante);
 						
 			linha = leitura.readLine();
 		}
 		
-		for(BilheteUnicoEstudante estudante : bilheteunicoestudanteservice.obterLista()) {
+		for(BilheteUnicoEstudante estudante : bilheteunicoestudanteService.obterLista()) {
 			System.out.println("[BILHETEUNICOESTUDANTE] " + estudante);
 		}
 		

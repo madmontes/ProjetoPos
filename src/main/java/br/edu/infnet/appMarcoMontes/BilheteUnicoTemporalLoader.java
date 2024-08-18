@@ -15,7 +15,7 @@ import br.edu.infnet.appMarcoMontes.model.service.BilheteUnicoTemporalService;
 public class BilheteUnicoTemporalLoader implements ApplicationRunner {
 	
 	@Autowired
-	private BilheteUnicoTemporalService bilheteunicotemporalservice;
+	private BilheteUnicoTemporalService bilheteunicotemporalService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -30,8 +30,7 @@ public class BilheteUnicoTemporalLoader implements ApplicationRunner {
 			
 			campos = linha.split(";");
 			
-			BilheteUnicoTemporal bilheteunicotemporal = new BilheteUnicoTemporal();
-			
+			BilheteUnicoTemporal bilheteunicotemporal = new BilheteUnicoTemporal();			
 			bilheteunicotemporal.setNumero(Integer.valueOf(campos[0]));
 			bilheteunicotemporal.setTipo(campos[1]);			
 			bilheteunicotemporal.setDescricao(campos[2]);
@@ -40,12 +39,12 @@ public class BilheteUnicoTemporalLoader implements ApplicationRunner {
 			bilheteunicotemporal.setCaracteristica(campos[5]);
 			bilheteunicotemporal.setPersonalizavel(Boolean.valueOf(campos[6]));			
 			
-			bilheteunicotemporalservice.incluir(bilheteunicotemporal);
+			bilheteunicotemporalService.incluir(bilheteunicotemporal);
 			
 			linha = leitura.readLine();
 		}	
 		
-		for(BilheteUnicoTemporal temporal : bilheteunicotemporalservice.obterLista()) {			
+		for(BilheteUnicoTemporal temporal : bilheteunicotemporalService.obterLista()) {			
 			System.out.println("[BILHETEUNICOTEMPORAL] " + temporal);									
 		}
 		
