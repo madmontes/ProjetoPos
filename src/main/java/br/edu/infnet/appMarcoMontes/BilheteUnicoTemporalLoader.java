@@ -9,6 +9,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appMarcoMontes.model.domain.BilheteUnicoTemporal;
+import br.edu.infnet.appMarcoMontes.model.domain.Usuario;
 import br.edu.infnet.appMarcoMontes.model.service.BilheteUnicoTemporalService;
 
 @Component
@@ -29,6 +30,9 @@ public class BilheteUnicoTemporalLoader implements ApplicationRunner {
 		while(linha != null) {
 			
 			campos = linha.split(";");
+		
+			Usuario usuario = new Usuario();
+			usuario.setId(Integer.valueOf(campos[7]));
 			
 			BilheteUnicoTemporal bilheteunicotemporal = new BilheteUnicoTemporal();			
 			bilheteunicotemporal.setNumero(Integer.valueOf(campos[0]));
@@ -37,7 +41,8 @@ public class BilheteUnicoTemporalLoader implements ApplicationRunner {
 			bilheteunicotemporal.setGratuidade(Boolean.valueOf(campos[3]));
 			bilheteunicotemporal.setSaldo(Float.valueOf(campos[4]));
 			bilheteunicotemporal.setCaracteristica(campos[5]);
-			bilheteunicotemporal.setPersonalizavel(Boolean.valueOf(campos[6]));			
+			bilheteunicotemporal.setPersonalizavel(Boolean.valueOf(campos[6]));
+			bilheteunicotemporal.setUsuario(usuario);
 			
 			bilheteunicotemporalService.incluir(bilheteunicotemporal);
 			

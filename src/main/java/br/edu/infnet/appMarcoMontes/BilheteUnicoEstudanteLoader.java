@@ -8,6 +8,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appMarcoMontes.model.domain.BilheteUnicoEstudante;
+import br.edu.infnet.appMarcoMontes.model.domain.Usuario;
 import br.edu.infnet.appMarcoMontes.model.service.BilheteUnicoEstudanteService;
 
 @Component
@@ -29,6 +30,9 @@ public class BilheteUnicoEstudanteLoader implements ApplicationRunner {
 			
 			campos = linha.split(";");
 			
+			Usuario usuario = new Usuario();
+			usuario.setId(Integer.valueOf(campos[7]));
+			
 			BilheteUnicoEstudante bilheteunicoestudante = new BilheteUnicoEstudante();
 			bilheteunicoestudante.setNumero(Integer.valueOf(campos[0]));
 			bilheteunicoestudante.setTipo(campos[1]);
@@ -37,6 +41,7 @@ public class BilheteUnicoEstudanteLoader implements ApplicationRunner {
 			bilheteunicoestudante.setSaldo(Float.valueOf(campos[4]));
 			bilheteunicoestudante.setCota(Integer.valueOf(campos[5]));
 			bilheteunicoestudante.setInstituicao(campos[6]);
+			bilheteunicoestudante.setUsuario(usuario);
 			
 			bilheteunicoestudanteService.incluir(bilheteunicoestudante);
 						

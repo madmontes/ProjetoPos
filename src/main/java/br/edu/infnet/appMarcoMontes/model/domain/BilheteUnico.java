@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,18 +22,22 @@ public abstract class BilheteUnico {
 	private String tipo;
 	private String descricao;	
 	private boolean gratuidade;
-	private float saldo;	
-		
+	private float saldo;
+	
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;	
 	@Override
 	public String toString() {
 		
-		return String.format("%d;%d;%s;%s;%s;%.2f",
+		return String.format("%d;%d;%s;%s;%s;%.2f;%s",
 				id,
 				numero,
 				tipo,				
 				descricao,
 				gratuidade ? "gratuidade=sim" : "gratuidade=não",
-				saldo);
+				saldo,
+				usuario);
 	}
 
 	public Integer getId() {
@@ -82,7 +88,12 @@ public abstract class BilheteUnico {
 		this.saldo = saldo;
 	}
 
-	
+	public Usuario getUsuario() {
+		return usuario;
+	}
 
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	
 }

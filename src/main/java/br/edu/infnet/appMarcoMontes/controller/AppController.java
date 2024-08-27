@@ -35,7 +35,8 @@ public class AppController {
 	
 	@GetMapping(value="/usuario/listagem")
 	public String listarUsuario(Model model) {
-
+		
+		model.addAttribute("titulo", "Listagem de Usuarios");
 		model.addAttribute("listagem",usuarioService.obterLista());
 		
 		return showIndex(model);
@@ -43,7 +44,8 @@ public class AppController {
 	
 	@GetMapping(value="/bilheteunico/listagem")
 	public String listarbilheteunico(Model model) {
-
+		
+		model.addAttribute("titulo", "Listagem de Bilhete Unico");
 		model.addAttribute("listagem",bilheteUnicoService.obterLista());
 		
 		return showIndex(model);
@@ -52,6 +54,7 @@ public class AppController {
 	@GetMapping(value="/bilheteunicotemporal/listagem")
 	public String listarBilheteUnicoTemporal(Model model) {
 
+		model.addAttribute("titulo", "Listagem de Bilhete Unico Temporal");
 		model.addAttribute("listagem",bilheteUnicoTemporalService.obterLista());
 		
 		return showIndex(model);
@@ -60,6 +63,7 @@ public class AppController {
 	@GetMapping(value="/bilheteunicoestudante/listagem")
 	public String listarBilheteUnicoEstudante(Model model) {
 
+		model.addAttribute("titulo", "Listagem de Bilhete Unico Estudante");
 		model.addAttribute("listagem",bilheteUnicoEstudanteService.obterLista());
 		
 		return showIndex(model);
