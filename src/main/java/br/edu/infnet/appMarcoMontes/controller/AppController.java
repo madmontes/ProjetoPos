@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import br.edu.infnet.appMarcoMontes.model.service.BilheteUnicoEstudanteService;
+import br.edu.infnet.appMarcoMontes.model.service.BilheteUnicoService;
 import br.edu.infnet.appMarcoMontes.model.service.BilheteUnicoTemporalService;
 import br.edu.infnet.appMarcoMontes.model.service.UsuarioService;
 
@@ -18,14 +19,16 @@ public class AppController {
 	private BilheteUnicoTemporalService bilheteUnicoTemporalService;
 	@Autowired
 	private BilheteUnicoEstudanteService bilheteUnicoEstudanteService;
+	@Autowired
+	private BilheteUnicoService bilheteUnicoService;
 	
 	@GetMapping(value = "/")
 	public String showIndex(Model model) {
 		
 		model.addAttribute("qtdeUsuario", usuarioService.obterQtde());
-		model.addAttribute("qtdeBilheteUnico", 0);
-		model.addAttribute("qtdeBilheteUnicoTemporal", bilheteUnicoTemporalService.obterLista().size());
-		model.addAttribute("qtdeBilheteUnicoEstudante", bilheteUnicoEstudanteService.obterLista().size());
+		model.addAttribute("qtdeBilheteUnico", bilheteUnicoService.obterQtde());
+		model.addAttribute("qtdeBilheteUnicoTemporal", bilheteUnicoTemporalService.obterQtde());
+		model.addAttribute("qtdeBilheteUnicoEstudante", bilheteUnicoEstudanteService.obterQtde());
 		
 		return "index";
 	}
@@ -34,6 +37,14 @@ public class AppController {
 	public String listarUsuario(Model model) {
 
 		model.addAttribute("listagem",usuarioService.obterLista());
+		
+		return showIndex(model);
+	}
+	
+	@GetMapping(value="/bilheteunico/listagem")
+	public String listarbilheteunico(Model model) {
+
+		model.addAttribute("listagem",bilheteUnicoService.obterLista());
 		
 		return showIndex(model);
 	}

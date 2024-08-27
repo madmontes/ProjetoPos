@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name="TBUSUARIO")
+@Table(name = "TBUSUARIO")
 public class Usuario {
 	
 	@Id

@@ -19,7 +19,7 @@ public class BilheteUnicoTemporalController {
 	@Autowired
 	private BilheteUnicoTemporalService bilheteunicotemporalService;
 	@GetMapping(value = "bilheteunicotemporal/listar")
-	public Collection<BilheteUnicoTemporal> obterLista(){
+	public Iterable<BilheteUnicoTemporal> obterLista(){
 		return bilheteunicotemporalService.obterLista();
 	}
 	

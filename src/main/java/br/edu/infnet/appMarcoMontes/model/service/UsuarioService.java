@@ -8,6 +8,7 @@ import br.edu.infnet.appMarcoMontes.model.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
+	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	

@@ -1,7 +1,5 @@
 package br.edu.infnet.appMarcoMontes.controller;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.infnet.appMarcoMontes.model.domain.BilheteUnicoEstudante;
-import br.edu.infnet.appMarcoMontes.model.domain.BilheteUnicoTemporal;
 import br.edu.infnet.appMarcoMontes.model.service.BilheteUnicoEstudanteService;
 
 @RestController
@@ -20,7 +17,7 @@ public class BilheteUnicoEstudanteController {
 	@Autowired
 	private BilheteUnicoEstudanteService bilheteunicoestudanteService;
 	@GetMapping(value = "bilheteunicoestudante/listar")
-	public Collection<BilheteUnicoEstudante> obterLista(){
+	public Iterable<BilheteUnicoEstudante> obterLista(){
 		return bilheteunicoestudanteService.obterLista();
 	}
 	

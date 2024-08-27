@@ -1,34 +1,37 @@
 package br.edu.infnet.appMarcoMontes.model.service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appMarcoMontes.model.domain.BilheteUnicoTemporal;
+import br.edu.infnet.appMarcoMontes.model.repository.BilheteUnicoTemporalRepository;
 
 @Service
 public class BilheteUnicoTemporalService {
 	
-	private Map<Integer, BilheteUnicoTemporal> mapa = new HashMap<Integer, BilheteUnicoTemporal>();
-	private Integer id = 0;
+	@Autowired
+	private BilheteUnicoTemporalRepository bilheteUnicoTemporalRepository;
 	
 	public void incluir(BilheteUnicoTemporal bilheteunicotemporal) {
-		bilheteunicotemporal.setId(++id);
-		
-		mapa.put(bilheteunicotemporal.getId(), bilheteunicotemporal);
+		bilheteUnicoTemporalRepository.save(bilheteunicotemporal);
+			
 	}
 	
-	public Collection<BilheteUnicoTemporal> obterLista(){
-		return mapa.values();
+	public Iterable<BilheteUnicoTemporal> obterLista(){
+		return bilheteUnicoTemporalRepository.findAll();
 	}
 	
 	public BilheteUnicoTemporal obterPortId(Integer id) {
-		return mapa.get(id);
+		return bilheteUnicoTemporalRepository.findById(id).orElse(null);
 	}
 	
 	public void excluir (Integer id) {
-		mapa.remove(id);
+		bilheteUnicoTemporalRepository.deleteById(id);
+		
 	}
+	
+	public long obterQtde() {
+		return bilheteUnicoTemporalRepository.count();
+	}
+
 }
